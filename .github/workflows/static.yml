@@ -31,13 +31,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+
+      - name: Setup Node.js (optional, if you use build tools)
+        uses: actions/setup-node@v4
         with:
-          # Upload entire repository
-          path: 'dist'
+          node-version: '18'
+
+      - name: Install dependencies and build site
+        run: |
+          npm install
+          npm run build  # Replace with your build command
+          
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist  # Replace with your actual build output directory
