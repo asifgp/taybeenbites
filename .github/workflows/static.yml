@@ -41,9 +41,13 @@ jobs:
         run: |
           npm install
           npm run build  # Replace with your build command
-          
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Replace with your actual build output directory
+          # Upload entire repository
+          publish_dir: './dist'
+
