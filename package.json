@@ -5,10 +5,8 @@
   "type": "module",
   "homepage": "https://asifgp.github.io/taybeenbites",
   "scripts": {
-    "dev": "vite --config vite.config.local.ts",
-    "build": "tsc -b && vite build --config vite.config.local.ts",
-    "build-local": "tsc -b && vite build --config vite.config.local.ts",
-    "build-ghp": "tsc -b && vite build --config vite.config.github.ts",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
